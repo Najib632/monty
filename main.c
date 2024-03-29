@@ -11,9 +11,10 @@ int main(int ac, char *av[])
 {
 	FILE *file;
 	char *filename = av[1], *line;
-	stack_t *stack;
-	ssize_t status;
-	size_t linsize = 0, linenum = 0;
+	/* stack_t_ *stack; */
+	ssize_t status = 1;
+	size_t lsize = 0;
+	unsigned int linenum = 0;
 
 	if (ac != 2)
 		argument_error();
@@ -25,8 +26,10 @@ int main(int ac, char *av[])
 	while (status > 0)
 	{
 		line = NULL;
-		status = getline(&line, &linlen, file);
+		status = getline(&line, &lsize, file);
 		linenum++;
+		if (status > 0)
+			printf("%i. %s", linenum, line);
 		free(line);
 	}
 

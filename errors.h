@@ -1,7 +1,8 @@
 #ifndef _ERRORS_H_
 #define _ERRORS_H_
 
-#include "monty.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * malloc_error - error for malloc
