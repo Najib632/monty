@@ -11,18 +11,22 @@ int main(int ac, char *av[])
 {
 	FILE *file;
 	char *filename = av[1], *line;
-	/* stack_t_ *stack; */
+	/* stack_t *stack; */
 	ssize_t status = 1;
 	size_t lsize = 0;
 	unsigned int linenum = 0;
 
 	if (ac != 2)
-		argument_error();
-
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	file = fopen(filename, "r");
 	if (file == NULL)
-		file_error(filename);
-
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		exit(EXIT_FAILURE);
+	}
 	while (status > 0)
 	{
 		line = NULL;
@@ -32,9 +36,11 @@ int main(int ac, char *av[])
 			printf("%i. %s", linenum, line);
 		free(line);
 	}
-
 	if (fclose(file) == EOF)
-		close_error();
+	{
+		perror("close");
+		exit(EXIT_FAILURE);
+	}
 
 	return (0);
 }

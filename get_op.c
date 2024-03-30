@@ -6,7 +6,7 @@
  *
  * Return: operation function (SUCCESS), NULL (FAIL)
  **/
-void (*get_opcode(char *opcode))(stack_t_ **stack, unsigned int linenum)
+void (*get_opcode(char *opcode))(stack_t **stack, unsigned int linenum)
 {
 	instruction_t instruction[] = {
 	{"push", NULL}, {NULL, NULL}

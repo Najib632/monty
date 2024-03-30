@@ -7,7 +7,7 @@
  *
  * Return: Nothing
  **/
-void push(stack_t_ **stack, unsigned int linenum)
+void push(stack_t **stack, unsigned int linenum)
 {
 	(void) stack;
 	(void) linenum;
