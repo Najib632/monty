@@ -12,7 +12,7 @@ int isdigits(char *digits)
 
 	for (i = 0; digits[i]; i++)
 	{
-		if (!isdigit(digits[i]))
+		if (!isdigit(digits[i]) || digits[0] != '-')
 			return (0);
 	}
 	return (1);
