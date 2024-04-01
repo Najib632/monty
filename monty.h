@@ -54,7 +54,7 @@ typedef struct instruction_s
  */
 typedef struct core_s
 {
-	int instrcnt;
+	FILE *file;
 	stack_t **stack;
 	char *opcode;
 	char *operand;
@@ -65,6 +65,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number);
 void operation(stack_t **, char *, unsigned int);
+void pint(stack_t **stack, unsigned int linenum);
 void free_stack(stack_t *stack);
 
 #endif /* _MONTY_H_ */

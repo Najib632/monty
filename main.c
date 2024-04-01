@@ -29,6 +29,7 @@ int main(int ac, char *av[])
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
+	core.file = file;
 	core.stack = &stack;
 	while (status > 0)
 	{
@@ -36,7 +37,6 @@ int main(int ac, char *av[])
 		status = getline(&line, &lsize, file);
 		core.opcode = strtok(line, DELIMS);
 		core.operand = strtok(NULL, DELIMS);
-		core.instrcnt = core.opcode && core.operand ? 2 : 1;
 		linenum++;
 		if (status > 0)
 		{

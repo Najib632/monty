@@ -16,6 +16,7 @@ void operation(stack_t **stack, char *opcode, unsigned int linenum)
 	if (opcode && execute == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", linenum, opcode);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	execute(stack, linenum);

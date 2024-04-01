@@ -33,11 +33,15 @@ void push(stack_t **stack, unsigned int linenum)
 	if (push == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
+		free_stack(*stack);
+		fclose(core.file);
 		exit(EXIT_FAILURE);
 	}
 	if (!core.operand && !isdigits(core.operand))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", linenum);
+		free_stack(*stack);
+		fclose(core.file);
 		exit(EXIT_FAILURE);
 	}
 	push->n = atoi(core.operand);
