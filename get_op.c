@@ -8,10 +8,11 @@
  **/
 void (*get_opcode(char *opcode))(stack_t **stack, unsigned int linenum)
 {
-	instruction_t instruction[] = {
-	{"push", NULL}, {NULL, NULL}
-	};
 	int i;
+	instruction_t instruction[] = {
+	{"push", push},
+	{"pall", pall}, {NULL, NULL}
+	};
 
 	for (i = 0; instruction[i].opcode; i++)
 	{
