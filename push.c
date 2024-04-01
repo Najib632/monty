@@ -35,7 +35,7 @@ void push(stack_t **stack, unsigned int linenum)
 		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
-	if (!isdigits(core.operand))
+	if (!core.operand && !isdigits(core.operand))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", linenum);
 		exit(EXIT_FAILURE);
