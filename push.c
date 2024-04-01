@@ -12,7 +12,7 @@ int isdigits(char *digits)
 
 	for (i = 0; digits[i]; i++)
 	{
-		if (!isdigit(digits[i]) || digits[0] != '-')
+		if (digits[0] != '+' || !isdigit(digits[i]) || digits[0] != '-')
 			return (0);
 	}
 	return (1);
@@ -37,7 +37,9 @@ void push(stack_t **stack, unsigned int linenum)
 		fclose(core.file);
 		exit(EXIT_FAILURE);
 	}
-	if (!core.operand && !isdigits(core.operand))
+	core.operand = strtok(NULL, DELIMS);
+	fprintf(stderr, "operand: %s\n", core.operand);
+	if (!core.operand)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", linenum);
 		free_stack(*stack);

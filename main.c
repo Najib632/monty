@@ -31,17 +31,11 @@ int main(int ac, char *av[])
 	}
 	core.file = file;
 	core.stack = &stack;
-	while (status > 0)
+	while ((status = getline(&line, &lsize, file)) != EOF)
 	{
-		line = NULL;
-		status = getline(&line, &lsize, file);
-		core.opcode = strtok(line, DELIMS);
-		core.operand = strtok(NULL, DELIMS);
 		linenum++;
-		if (status > 0)
-		{
-			operation(core.stack, core.opcode, linenum);
-		}
+		core.opcode = strtok(line, DELIMS);
+		execute(core.stack, core.opcode, linenum);
 		free(line);
 	}
 	free_stack(*core.stack);

@@ -11,7 +11,7 @@
 #include <fcntl.h>
 #include <ctype.h>
 
-#define DELIMS "\t\n "
+#define DELIMS " "
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -47,7 +47,7 @@ typedef struct instruction_s
  * struct core_s - core memory and token details
  * @instrcnt: number of instructions
  * @stack: stack memory
- * @opcode: operation code
+ * @opcode: execute code
  * @operand: value to load
  *
  * Description: stack memory and instruction details
@@ -64,7 +64,7 @@ extern core_t core;
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void (*get_opcode(char *opcode))(stack_t **stack, unsigned int line_number);
-void operation(stack_t **, char *, unsigned int);
+void execute(stack_t **, char *, unsigned int);
 void pint(stack_t **stack, unsigned int linenum);
 void free_stack(stack_t *stack);
 
